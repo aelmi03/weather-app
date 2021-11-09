@@ -1,3 +1,5 @@
+import './weather.css';
+/*
 import {
   getWeatherTodayByLocation,
   convertTimestampToDate,
@@ -14,3 +16,4 @@ getWeatherTodayByLocation('Vancouver', 'metric')
     console.log(response);
   })
   .catch((err) => console.log(err));
+*/
