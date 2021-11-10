@@ -1,11 +1,11 @@
 import './weather.css';
-/*
+
 import {
   getWeatherTodayByLocation,
   convertTimestampToDate,
 } from './weather-logic/weather-functions';
 
-getWeatherTodayByLocation('Vancouver', 'metric')
+getWeatherTodayByLocation('Houston', 'metric')
   .then((response) => {
     console.log(response);
     return response;
@@ -16,4 +16,3 @@ getWeatherTodayByLocation('Vancouver', 'metric')
     console.log(response);
   })
   .catch((err) => console.log(err));
-*/
