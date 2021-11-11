@@ -18,7 +18,9 @@
     "url": "https://github.com/aelmi03/weather-app/issues"
   },
   "homepage": "https://github.com/aelmi03/weather-app#readme",
-  "dependencies": {},
+  "dependencies": {
+    "date-fns": "^2.25.0"
+  },
   "devDependencies": {
     "css-loader": "^6.5.1",
     "eslint": "^7.32.0",
