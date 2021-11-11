@@ -1,8 +1,8 @@
 import './weather.css';
 
-import { getTodaysWeather } from './weather-logic/weather-functions';
+import { getNext7DaysOfWeather } from './weather-logic/weather-functions';
 
-getTodaysWeather('Vancouver', 'metric')
+getNext7DaysOfWeather('Vancouver', 'metric')
   .then((response) => {
     console.log(response);
     return response;

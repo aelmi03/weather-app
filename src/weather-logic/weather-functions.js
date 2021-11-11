@@ -62,9 +62,57 @@ async function getTodaysWeather(city, unit) {
   );
   return todayWeatherObject;
 }
+function convertTimestampToDate(timeStamp) {
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  const currentDate = new Date(timeStamp * 1000);
+  return `${monthNames[currentDate.getMonth()]} ${currentDate.getDate()}`;
+}
+function makeWeeklyObject(weatherObject) {
+  const date = convertTimestampToDate(weatherObject.dt);
+  // eslint-disable-next-line prefer-destructuring
+  const { icon, description } = weatherObject.weather[0];
+  const {
+    temp: { min, max },
+  } = weatherObject;
+  return {
+    date,
+    icon,
+    description,
+    min,
+    max,
+  };
+}
+function transformToWeeklyWeatherObject(weatherObject) {
+  const weeklyWeatherObjects = [];
+  for (let i = 1; i < weatherObject.daily.length; i += 1) {
+    // eslint-disable-next-line prefer-destructuring
+    const weeklyWeatherObject = makeWeeklyObject(weatherObject.daily[i]);
+    weeklyWeatherObjects.push(weeklyWeatherObject);
+  }
+  return weeklyWeatherObjects;
+}
 
+async function getNext7DaysOfWeather(city, unit) {
+  const weatherToday = await getWeatherTodayByLocation(city, unit);
+  const weeklyWeatherObjects = transformToWeeklyWeatherObject(weatherToday);
+  return weeklyWeatherObjects;
+}
 export {
   getWeatherTodayByLocation,
   getLatitudeAndLongtitude,
   getTodaysWeather,
+  getNext7DaysOfWeather,
 };
