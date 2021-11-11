@@ -23,7 +23,7 @@ function convertUnixTimestampToHours(timeStamp) {
   const date = fromUnixTime(timeStamp);
   // eslint-disable-next-line prettier/prettier
   const minutes = date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`;
-  return `${date.getHours()}:${minutes}}`;
+  return `${date.getHours()}:${minutes}`;
 }
 function transformToCurrentWeatherObject(weatherObject, weatherCity) {
   const city = weatherCity;
@@ -53,8 +53,18 @@ function transformToCurrentWeatherObject(weatherObject, weatherCity) {
   };
 }
 
+async function getTodaysWeather(city, unit) {
+  const weatherToday = await getWeatherTodayByLocation(city, unit);
+  console.log(weatherToday);
+  const todayWeatherObject = transformToCurrentWeatherObject(
+    weatherToday,
+    city
+  );
+  return todayWeatherObject;
+}
+
 export {
   getWeatherTodayByLocation,
   getLatitudeAndLongtitude,
-  transformToCurrentWeatherObject,
+  getTodaysWeather,
 };
