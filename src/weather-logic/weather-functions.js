@@ -56,7 +56,6 @@ function transformToCurrentWeatherObject(weatherObject) {
 
 async function getTodaysWeather(city, unit) {
   const weatherToday = await getWeatherTodayByLocation(city, unit);
-  console.log(weatherToday);
   const todayWeatherObject = transformToCurrentWeatherObject(weatherToday);
   return todayWeatherObject;
 }

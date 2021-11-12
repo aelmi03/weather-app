@@ -30,10 +30,18 @@ async function loadData(e) {
     );
     const todayWeather = transformToCurrentWeatherObject(weatherData);
     const nextWeekWeather = transformToWeeklyWeatherObject(weatherData);
-    Pubsub.publish('displayTodayWeather', todayWeather);
-    Pubsub.publish('displayExtraDetails', todayWeather);
-    Pubsub.publish('displayNextWeekWeather', nextWeekWeather);
-    console.log(nextWeekWeather);
+    Pubsub.publish('displayTodayWeather', [
+      todayWeather,
+      temperatureButton.textContent,
+    ]);
+    Pubsub.publish('displayExtraDetails', [
+      todayWeather,
+      temperatureButton.textContent,
+    ]);
+    Pubsub.publish('displayNextWeekWeather', [
+      nextWeekWeather,
+      temperatureButton.textContent,
+    ]);
     console.log(todayWeather);
   } catch (error) {
     Pubsub.publish('showCityNotFoundMessage');
