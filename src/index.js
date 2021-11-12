@@ -1,5 +1,5 @@
 import './weather.css';
-
+import './weather-logic/weatherController';
 import {
   getWeatherTodayByLocation,
   transformToCurrentWeatherObject,
