@@ -17,6 +17,7 @@ async function getWeatherTodayByLocation(city, unit) {
     { mode: 'cors' }
   );
   const weatherData = await weatherResponse.json();
+  weatherData.city = city;
   return weatherData;
 }
 function convertUnixTimestampToHours(timeStamp) {
@@ -25,8 +26,8 @@ function convertUnixTimestampToHours(timeStamp) {
   const minutes = date.getMinutes() > 9 ? date.getMinutes() : `0${date.getMinutes()}`;
   return `${date.getHours()}:${minutes}`;
 }
-function transformToCurrentWeatherObject(weatherObject, weatherCity) {
-  const city = weatherCity;
+function transformToCurrentWeatherObject(weatherObject) {
+  const { city } = weatherObject;
   const sunrise = convertUnixTimestampToHours(weatherObject.current.sunrise);
   const sunset = convertUnixTimestampToHours(weatherObject.current.sunset);
   const {
@@ -56,10 +57,7 @@ function transformToCurrentWeatherObject(weatherObject, weatherCity) {
 async function getTodaysWeather(city, unit) {
   const weatherToday = await getWeatherTodayByLocation(city, unit);
   console.log(weatherToday);
-  const todayWeatherObject = transformToCurrentWeatherObject(
-    weatherToday,
-    city
-  );
+  const todayWeatherObject = transformToCurrentWeatherObject(weatherToday);
   return todayWeatherObject;
 }
 function convertTimestampToDate(timeStamp) {
@@ -115,4 +113,6 @@ export {
   getLatitudeAndLongtitude,
   getTodaysWeather,
   getNext7DaysOfWeather,
+  transformToCurrentWeatherObject,
+  transformToWeeklyWeatherObject,
 };

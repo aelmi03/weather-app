@@ -1,10 +1,16 @@
 import './weather.css';
 
-import { getNext7DaysOfWeather } from './weather-logic/weather-functions';
+import {
+  getWeatherTodayByLocation,
+  transformToCurrentWeatherObject,
+  transformToWeeklyWeatherObject,
+} from './weather-logic/weather-functions';
 
-getNext7DaysOfWeather('Vancouver', 'metric')
+getWeatherTodayByLocation('Vancouver', 'metric')
   .then((response) => {
-    console.log(response);
-    return response;
+    const arrayOfWeather = transformToWeeklyWeatherObject(response);
+    const currentWeather = transformToCurrentWeatherObject(response);
+    console.log(arrayOfWeather);
+    console.log(currentWeather);
   })
   .catch((err) => console.log(err));
