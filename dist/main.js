@@ -150,13 +150,33 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 
 /***/ }),
 
+/***/ "./src/components/helperFunctions.js":
+/*!*******************************************!*\
+  !*** ./src/components/helperFunctions.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ appendAllChildren)\n/* harmony export */ });\nfunction appendAllChildren(parentElement, childrenElements) {\n  for (let i = 0; i < childrenElements.length; i += 1) {\n    parentElement.appendChild(childrenElements[i]);\n  }\n}\n\n\n\n\n//# sourceURL=webpack://weather-app/./src/components/helperFunctions.js?");
+
+/***/ }),
+
+/***/ "./src/components/todaysWeatherSection.js":
+/*!************************************************!*\
+  !*** ./src/components/todaysWeatherSection.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _helperFunctions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helperFunctions */ \"./src/components/helperFunctions.js\");\n/* harmony import */ var _weather_logic_pubsub__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../weather-logic/pubsub */ \"./src/weather-logic/pubsub.js\");\n\n\n/* eslint-disable prefer-destructuring */\nconst todayWeatherCardContainer = document.querySelector(\n  // eslint-disable-next-line prettier/prettier\n  '.today-card-container',\n);\nfunction displayTodayWeatherCard([weatherObject, temperatureSign]) {\n  todayWeatherCardContainer.textContent = '';\n  const todayCardDiv = document.createElement('div');\n  todayCardDiv.classList.add('today-card');\n  const cityName = document.createElement('h2');\n  cityName.classList.add('city-name');\n  cityName.textContent = weatherObject.city;\n  const mainWeather = document.createElement('h3');\n  mainWeather.textContent = weatherObject.main;\n  const imageContainer = document.createElement('div');\n  imageContainer.classList.add('today-image-container');\n  const weatherIcon = document.createElement('img');\n  weatherIcon.classList.add('today-image');\n  weatherIcon.src = `http://openweathermap.org/img/w/${weatherObject.icon}.png`;\n  weatherIcon.alt = `icon depicting ${weatherObject.description}`;\n  imageContainer.appendChild(weatherIcon);\n  const descriptionOfWeather = document.createElement('h3');\n  descriptionOfWeather.textContent = weatherObject.description;\n  const temperatureOfToday = document.createElement('h2');\n  temperatureOfToday.classList.add('today-temperature');\n  temperatureOfToday.textContent = `${weatherObject.temp} ${temperatureSign}`;\n  (0,_helperFunctions__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(todayCardDiv, [\n    cityName,\n    mainWeather,\n    imageContainer,\n    descriptionOfWeather,\n    temperatureOfToday,\n  ]);\n  todayWeatherCardContainer.appendChild(todayCardDiv);\n}\n_weather_logic_pubsub__WEBPACK_IMPORTED_MODULE_1__[\"default\"].subscribe('displayTodayWeather', displayTodayWeatherCard);\n/*\n<div class = \"today-card-container\">\n      <div class=\"today-card\">\n        <h2 class=\"city-name\">Vancouver</h2>\n        <h3>Clouds</h3>\n        <div class = \"today-image-container\">\n          <img class = \"today-image\" src=\"http://openweathermap.org/img/w/04d.png\" alt=\"weather-icon\" />\n        </div>\n        <h3>Overcast clouds</h3>\n        <h2 class = \"today-temperature\">22 °C</h3>\n      </div>\n    </div>\n*/\n\n\n//# sourceURL=webpack://weather-app/./src/components/todaysWeatherSection.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _weather_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./weather.css */ \"./src/weather.css\");\n/* harmony import */ var _weather_logic_weatherController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weather-logic/weatherController */ \"./src/weather-logic/weatherController.js\");\n/* harmony import */ var _weather_logic_weather_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weather-logic/weather-functions */ \"./src/weather-logic/weather-functions.js\");\n\n\n\n\n(0,_weather_logic_weather_functions__WEBPACK_IMPORTED_MODULE_2__.getWeatherTodayByLocation)('Vancouver', 'metric')\n  .then((response) => {\n    const arrayOfWeather = (0,_weather_logic_weather_functions__WEBPACK_IMPORTED_MODULE_2__.transformToWeeklyWeatherObject)(response);\n    const currentWeather = (0,_weather_logic_weather_functions__WEBPACK_IMPORTED_MODULE_2__.transformToCurrentWeatherObject)(response);\n    console.log(arrayOfWeather);\n    console.log(currentWeather);\n  })\n  .catch((err) => console.log(err));\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _weather_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./weather.css */ \"./src/weather.css\");\n/* harmony import */ var _weather_logic_weatherController__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./weather-logic/weatherController */ \"./src/weather-logic/weatherController.js\");\n/* harmony import */ var _weather_logic_weather_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./weather-logic/weather-functions */ \"./src/weather-logic/weather-functions.js\");\n/* harmony import */ var _components_todaysWeatherSection__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/todaysWeatherSection */ \"./src/components/todaysWeatherSection.js\");\n\n\n\n\n\n(0,_weather_logic_weather_functions__WEBPACK_IMPORTED_MODULE_2__.getWeatherTodayByLocation)('Vancouver', 'metric')\n  .then((response) => {\n    const arrayOfWeather = (0,_weather_logic_weather_functions__WEBPACK_IMPORTED_MODULE_2__.transformToWeeklyWeatherObject)(response);\n    const currentWeather = (0,_weather_logic_weather_functions__WEBPACK_IMPORTED_MODULE_2__.transformToCurrentWeatherObject)(response);\n    console.log(arrayOfWeather);\n    console.log(currentWeather);\n  })\n  .catch((err) => console.log(err));\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
 
 /***/ }),
 
