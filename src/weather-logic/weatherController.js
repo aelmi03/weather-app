@@ -30,15 +30,15 @@ async function loadData(e) {
     );
     const todayWeather = transformToCurrentWeatherObject(weatherData);
     const nextWeekWeather = transformToWeeklyWeatherObject(weatherData);
-    Pubsub.publish('displayTodayWeather', [
+    Pubsub.publish('loadTodaysWeather', [
       todayWeather,
       temperatureButton.textContent,
     ]);
-    Pubsub.publish('displayExtraDetails', [
+    Pubsub.publish('loadExtraDetails', [
       todayWeather,
       temperatureButton.textContent,
     ]);
-    Pubsub.publish('displayNextWeekWeather', [
+    Pubsub.publish('loadNextWeekWeather', [
       nextWeekWeather,
       temperatureButton.textContent,
     ]);

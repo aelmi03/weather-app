@@ -35,7 +35,7 @@ function displayTodayWeatherCard([weatherObject, temperatureSign]) {
   ]);
   todayWeatherCardContainer.appendChild(todayCardDiv);
 }
-Pubsub.subscribe('displayTodayWeather', displayTodayWeatherCard);
+Pubsub.subscribe('loadTodaysWeather', displayTodayWeatherCard);
 /*
 <div class = "today-card-container">
       <div class="today-card">

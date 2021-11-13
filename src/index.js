@@ -6,6 +6,7 @@ import {
   transformToWeeklyWeatherObject,
 } from './weather-logic/weather-functions';
 import './components/todaysWeatherSection';
+import './components/extraDetailsSection';
 
 getWeatherTodayByLocation('Vancouver', 'metric')
   .then((response) => {
