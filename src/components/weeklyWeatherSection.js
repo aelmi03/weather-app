@@ -44,16 +44,3 @@ function displayWeeklyWeatherForecast([weeklyWeatherArray, temperatureSign]) {
   }
 }
 Pubsub.subscribe('loadNextWeekWeather', displayWeeklyWeatherForecast);
-/*
-<div class = "weekly-forecast">
-        <div class = "weekly-forecast-card">
-          <h3>November 10</h3>
-          <div class = "weather-image-container">
-           <img class = "weather-image" src="http://openweathermap.org/img/w/01d.png" alt="weather-icon" />
-          </div>
-          <h3>Clear sky</h3>
-          <h3>Min: 5 °C</h3>
-          <h3>Max : 13 °C</h3>
-        </div>
-      </div>
-*/
