@@ -63,5 +63,5 @@ function changeTemperatureUnit(e) {
   loadData(currentCity);
 }
 const form = document.querySelector('form');
-temperatureButton.addEventListener('click', changeTemperatureUnit);
 form.addEventListener('submit', searchWeatherData);
+temperatureButton.addEventListener('click', changeTemperatureUnit);
