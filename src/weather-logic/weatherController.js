@@ -44,6 +44,10 @@ async function loadData(city) {
       todayWeather,
       temperatureButton.textContent,
     ]);
+    Pubsub.publish('loadHourlyForecastData', [
+      hourlyWeather,
+      temperatureButton.textContent,
+    ]);
     Pubsub.publish('loadNextWeekWeather', [
       nextWeekWeather,
       temperatureButton.textContent,
