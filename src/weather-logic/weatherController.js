@@ -1,6 +1,7 @@
 import {
   getWeatherTodayByLocation,
   transformToCurrentWeatherObject,
+  transformToHourlyWeatherObject,
   transformToWeeklyWeatherObject,
 } from './weather-functions';
 
@@ -31,6 +32,8 @@ async function loadData(city) {
     );
     const todayWeather = transformToCurrentWeatherObject(weatherData);
     const nextWeekWeather = transformToWeeklyWeatherObject(weatherData);
+    const hourlyWeather = transformToHourlyWeatherObject(weatherData);
+    console.log(hourlyWeather);
     // eslint-disable-next-line prefer-destructuring
     currentCity = searchInput.value || currentCity;
     Pubsub.publish('loadTodaysWeather', [

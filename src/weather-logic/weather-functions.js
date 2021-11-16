@@ -13,7 +13,7 @@ async function getLatitudeAndLongtitude(city) {
 async function getWeatherTodayByLocation(city, unit) {
   const [latitude, longitude] = await getLatitudeAndLongtitude(city);
   const weatherResponse = await fetch(
-    `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely,alerts&appid=712b9aa6ed9063798a216524da6bb71e&units=${unit}`,
+    `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=minutely,alerts&appid=712b9aa6ed9063798a216524da6bb71e&units=${unit}`,
     { mode: 'cors' }
   );
   const weatherData = await weatherResponse.json();
@@ -101,7 +101,26 @@ function transformToWeeklyWeatherObject(weatherObject) {
   }
   return weeklyWeatherObjects;
 }
-
+function makeHourlyObject(weatherObject) {
+  const { temp } = weatherObject;
+  // eslint-disable-next-line prefer-destructuring
+  const { icon, description } = weatherObject.weather[0];
+  const hour = convertUnixTimestampToHours(weatherObject.dt);
+  return {
+    hour,
+    temp,
+    icon,
+    description,
+  };
+}
+function transformToHourlyWeatherObject(weatherObject) {
+  const hourlyWeatherObjects = [];
+  for (let i = 0; i < 24; i += 1) {
+    const hourlyWeatherObject = makeHourlyObject(weatherObject.hourly[i]);
+    hourlyWeatherObjects.push(hourlyWeatherObject);
+  }
+  return hourlyWeatherObjects;
+}
 async function getNext7DaysOfWeather(city, unit) {
   const weatherToday = await getWeatherTodayByLocation(city, unit);
   const weeklyWeatherObjects = transformToWeeklyWeatherObject(weatherToday);
@@ -109,9 +128,9 @@ async function getNext7DaysOfWeather(city, unit) {
 }
 export {
   getWeatherTodayByLocation,
-  getLatitudeAndLongtitude,
   getTodaysWeather,
   getNext7DaysOfWeather,
   transformToCurrentWeatherObject,
   transformToWeeklyWeatherObject,
+  transformToHourlyWeatherObject,
 };
