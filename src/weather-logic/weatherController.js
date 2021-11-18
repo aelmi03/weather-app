@@ -1,4 +1,5 @@
 import {
+  getTodaysWeather,
   getWeatherTodayByLocation,
   transformToCurrentWeatherObject,
   transformToHourlyWeatherObject,
@@ -23,6 +24,18 @@ function checkIfSearchFieldIsFilled(e) {
   e.preventDefault();
   return e.target.checkValidity();
 }
+async function changeValueOfCurrentCity() {
+  if (!searchInput.value) return;
+  try {
+    // eslint-disable-next-line no-unused-vars
+    const cityData = await getTodaysWeather(searchInput.value, 'metric');
+    // eslint-disable-next-line prefer-destructuring
+    currentCity = searchInput.value;
+  } catch (e) {
+    console.log(e);
+    console.log('error');
+  }
+}
 async function loadData(city) {
   try {
     const weatherData = await getWeatherTodayByLocation(
@@ -33,9 +46,7 @@ async function loadData(city) {
     const todayWeather = transformToCurrentWeatherObject(weatherData);
     const nextWeekWeather = transformToWeeklyWeatherObject(weatherData);
     const hourlyWeather = transformToHourlyWeatherObject(weatherData);
-    console.log(hourlyWeather);
-    // eslint-disable-next-line prefer-destructuring
-    currentCity = searchInput.value || currentCity;
+    await changeValueOfCurrentCity();
     Pubsub.publish('loadTodaysWeather', [
       todayWeather,
       temperatureButton.textContent,
