@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Josefin+Sans&family=Merriweather:wght@300&family=Montserrat&family=Playfair+Display:wght@600&display=swap');
 *,
 *::before,
 *::after {
@@ -26,46 +27,78 @@ h1 {
 label {
   font-weight: 1.4;
   font-size: 1.3rem;
+  font-family: 'Josefin Sans', sans-serif;
   font-weight: bold;
   text-shadow: white 1px 1px 1px;
   color: rgb(19, 8, 8);
 }
-
+h1 {
+  font-family: 'Playfair Display', serif;
+}
+h2 {
+  font-family: 'Montserrat', sans-serif;
+}
+h3 {
+  font-family: 'Arvo', serif;
+}
 form {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
 }
 
 input {
   border: none;
   outline: none;
-  padding: 0.1rem;
+  padding: 0.25rem 0.1rem;
   box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
 .search-button {
+  z-index: 1;
+  position: relative;
   border: none;
   outline: none;
   background-color: black;
   color: white;
-  padding: 0.1rem 1rem;
+  padding: 0.25rem 1rem;
   box-shadow: rgba(197, 194, 194, 0.726) 0px 5px 15px;
   font-size: 1rem;
   text-shadow: white 1px 1px 1px;
   border-radius: 5px;
   transition: all 0.4s ease-in-out;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.search-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: scaleX(0);
+  transition: transform 0.4s ease-in-out;
+  z-index: -1;
+  transform-origin: left;
+  border-radius: 5px;
+  background-color: white;
 }
 
+.search-button:hover::before {
+  transform: scaleX(1);
+}
 .search-button:hover {
-  background-color: white;
-  text-shadow: black 1px 1px 1px;
   color: black;
+  text-shadow: black 1px 1px 1px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
 .temperature-button {
-  font-size: 1.2rem;
-  border: 2px dotted black;
+  position: relative;
+  font-size: 1.5rem;
   outline: none;
+  font-family: 'Arvo', serif;
   padding: 0.8rem;
   background-color: white;
   text-shadow: black 1px 1px 1px;
@@ -73,10 +106,26 @@ input {
   clip-path: circle(50% at 50% 50%);
   transition: all 0.4s ease-in-out;
 }
+.temperature-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5rem;
+  border-radius: 50px;
+  transform: scale(0);
+  transition: transform 0.4s ease-in-out;
+  z-index: -1;
+  background-color: black;
+}
+.temperature-button:hover::before {
+  transform: scale(1);
+}
 
 .temperature-button:hover {
   border: 2px dotted white;
-  background-color: black;
   color: white;
   text-shadow: white 1px 1px 1px;
   box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
@@ -160,7 +209,12 @@ input {
   padding: 1.5rem 2.3rem;
   flex-flow: column nowrap;
   gap: 0.5rem;
+  transition: all 0.3s ease-in-out;
   box-shadow: rgba(197, 194, 194, 0.726) 0px 5px 15px;
+}
+.weekly-forecast-card:hover,
+.hourly-forecast-card:hover {
+  transform: scale(1.2);
 }
 .hourly-forecast-card {
   padding: 1.5rem 1rem;
@@ -195,5 +249,8 @@ input {
   }
   .extra-details > h3 {
     font-size: 1.2rem;
+  }
+  .search-button {
+    font-size: 1.1rem;
   }
 }
