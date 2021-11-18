@@ -112,7 +112,7 @@ input {
   flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: center;
-  padding: 1.4rem 1rem;
+  padding: 1.8rem 1rem;
   font-size: 0.85rem;
   background-color: rgb(202, 202, 202);
 }
@@ -131,8 +131,11 @@ input {
 }
 .weekly-forecast-container,
 .hourly-forecast-container {
-  margin-top: 1rem;
+  margin-top: 3rem;
   width: 100%;
+}
+.weekly-forecast-container {
+  margin-bottom: 1rem;
 }
 
 .weekly-forecast-title,
@@ -161,7 +164,7 @@ input {
   padding: 1.5rem 1rem;
   min-width: 10rem;
 }
-.weekly-forecast-card,
+.weekly-forecast-card > h3,
 .hourly-forecast-card > h3 {
   font-size: 0.9rem;
 }
@@ -173,4 +176,17 @@ input {
   width: 100%;
   margin-top: 2rem;
   justify-content: center;
+}
+@media only screen and (min-width: 768px) {
+  .weekly-forecast-card > h3,
+  .hourly-forecast-card > h3 {
+    font-size: 1.1rem;
+  }
+  .weekly-forecast-title,
+  .hourly-forecast-title {
+    font-size: 1.9rem;
+  }
+  .extra-details > h3 {
+    font-size: 1.2rem;
+  }
 }
