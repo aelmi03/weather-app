@@ -33,7 +33,6 @@ async function changeValueOfCurrentCity() {
     currentCity = searchInput.value;
   } catch (e) {
     console.log(e);
-    console.log('error');
   }
 }
 async function loadData(city) {
@@ -63,7 +62,6 @@ async function loadData(city) {
       nextWeekWeather,
       temperatureButton.textContent,
     ]);
-    console.log(todayWeather);
   } catch (error) {
     Pubsub.publish('showCityNotFoundMessage');
   }

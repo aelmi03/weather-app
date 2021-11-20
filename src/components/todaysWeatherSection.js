@@ -36,16 +36,3 @@ function displayTodayWeatherCard([weatherObject, temperatureSign]) {
   todayWeatherCardContainer.appendChild(todayCardDiv);
 }
 Pubsub.subscribe('loadTodaysWeather', displayTodayWeatherCard);
-/*
-<div class = "today-card-container">
-      <div class="today-card">
-        <h2 class="city-name">Vancouver</h2>
-        <h3>Clouds</h3>
-        <div class = "today-image-container">
-          <img class = "today-image" src="http://openweathermap.org/img/w/04d.png" alt="weather-icon" />
-        </div>
-        <h3>Overcast clouds</h3>
-        <h2 class = "today-temperature">22 °C</h3>
-      </div>
-    </div>
-*/

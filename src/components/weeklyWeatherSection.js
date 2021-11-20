@@ -34,7 +34,6 @@ function makeWeatherCardDiv([weatherObject, temperatureSign]) {
 }
 function displayWeeklyWeatherForecast([weeklyWeatherArray, temperatureSign]) {
   weeklyForecastContainer.textContent = '';
-  console.log(':)');
   for (let i = 0; i < weeklyWeatherArray.length; i += 1) {
     const weatherDiv = makeWeatherCardDiv([
       weeklyWeatherArray[i],

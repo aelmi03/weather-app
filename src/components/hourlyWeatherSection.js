@@ -40,15 +40,3 @@ function displayHourlyWeatherForecast([weatherObjectArray, temperatureSign]) {
   }
 }
 Pubsub.subscribe('loadHourlyForecastData', displayHourlyWeatherForecast);
-/*
-<div class="hourly-forecast">
-        <div class="hourly-forecast-card">
-          <h3>10:41</h3>
-          <div class = "weather-image-container">
-            <img class = "weather-image" src="http://openweathermap.org/img/w/01d.png" alt="weather-icon" />
-          </div>
-          <h3>Moderate Rain</h3>
-          <h3>41 °C</h3>
-        </div>
-</div>
-*/
